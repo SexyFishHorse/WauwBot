@@ -123,15 +123,23 @@
             }
             else
             {
-            chatList.BeginUpdate();
-            chatList.Items.Add(
-                new ChatListViewItem(
-                    chatMessage.Provider,
-                    chatMessage.Username,
-                    chatMessage.Timestamp,
-                    chatMessage.Message));
-            chatList.EndUpdate();
+                chatList.BeginUpdate();
+                chatList.Items.Add(
+                    new ChatListViewItem(
+                        chatMessage.Provider,
+                        chatMessage.Username,
+                        chatMessage.Timestamp,
+                        chatMessage.Message));
+                chatList.EndUpdate();
             }
+        }
+
+        private void SendButtonClick(object sender, EventArgs e)
+        {
+            var message = messageTextBox.Text.Trim();
+
+            Client.SendChatMessage(message);
+            messageTextBox.Clear();
         }
     }
 }
