@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="View\UiElements\ChatListViewItem.cs" />
     <Compile Include="View\WauwBot.cs">
       <SubType>Form</SubType>
     </Compile>
