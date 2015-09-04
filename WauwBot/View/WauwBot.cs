@@ -1,4 +1,4 @@
-﻿namespace SexyFishHorse.WauwBot
+﻿namespace SexyFishHorse.WauwBot.View
 {
     using System.Windows.Forms;
 

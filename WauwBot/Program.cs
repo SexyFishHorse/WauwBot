@@ -2,6 +2,7 @@
 {
     using System;
     using System.Windows.Forms;
+    using SexyFishHorse.WauwBot.View;
 
     static class Program
     {

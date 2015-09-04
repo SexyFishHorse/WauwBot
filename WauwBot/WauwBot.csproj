@@ -47,10 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="WauwBot.cs">
+    <Compile Include="View\WauwBot.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WauwBot.Designer.cs">
+    <Compile Include="View\WauwBot.Designer.cs">
       <DependentUpon>WauwBot.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -65,6 +65,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\WauwBot.resx">
+      <DependentUpon>WauwBot.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
