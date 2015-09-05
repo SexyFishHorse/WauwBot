@@ -4,7 +4,7 @@
 
     public class ChatMessage
     {
-        public string Provider { get; set; }
+        public Provider Provider { get; set; }
 
         public string Username { get; set; }
 

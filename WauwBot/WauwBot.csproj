@@ -70,7 +70,6 @@
     <Compile Include="Model\ChatMessage.cs" />
     <Compile Include="Model\MongoBase.cs" />
     <Compile Include="Model\Provider.cs" />
-    <Compile Include="View\UiElements\ChatListViewItem.cs" />
     <Compile Include="DataAccess\StoredInAttribute.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="DataAccess\Stores\IWriteStore.cs">
@@ -78,6 +77,7 @@
     </Compile>
     <Compile Include="DataAccess\Stores\ReadStore.cs" />
     <Compile Include="DataAccess\Stores\WriteStore.cs" />
+    <Compile Include="View\UiElements\ChatLine.cs" />
     <Compile Include="View\UiElements\MessageListBox\ItemInfo.cs" />
     <Compile Include="View\UiElements\MessageListBox\ListBoxList.cs" />
     <Compile Include="View\UiElements\MessageListBox\MessageListBox.cs">
