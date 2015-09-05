@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Model\ChatMessage.cs" />
     <Compile Include="View\UiElements\ChatListViewItem.cs" />
+    <Compile Include="DataAccess\StoredInAttribute.cs" />
     <Compile Include="View\WauwBot.cs">
       <SubType>Form</SubType>
     </Compile>
