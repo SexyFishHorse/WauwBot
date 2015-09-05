@@ -64,10 +64,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\Stores\IReadStore.cs">
+      <DependentUpon>ReadStore.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\ChatMessage.cs" />
     <Compile Include="Model\MongoBase.cs" />
     <Compile Include="View\UiElements\ChatListViewItem.cs" />
     <Compile Include="DataAccess\StoredInAttribute.cs" />
+    <Compile Include="DataAccess\Stores\ReadStore.cs" />
     <Compile Include="View\WauwBot.cs">
       <SubType>Form</SubType>
     </Compile>
