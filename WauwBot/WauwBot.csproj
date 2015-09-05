@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\ChatMessage.cs" />
+    <Compile Include="Model\MongoBase.cs" />
     <Compile Include="View\UiElements\ChatListViewItem.cs" />
     <Compile Include="DataAccess\StoredInAttribute.cs" />
     <Compile Include="View\WauwBot.cs">
