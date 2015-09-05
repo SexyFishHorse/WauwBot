@@ -4,7 +4,6 @@
     using System.IO;
     using System.Threading;
     using System.Windows.Forms;
-    using ListBox;
     using SexyFishHorse.Irc.Client;
     using SexyFishHorse.Irc.Client.Clients;
     using SexyFishHorse.Irc.Client.Configuration;
@@ -15,25 +14,27 @@
 
     public partial class WauwBot : Form
     {
-        public WauwBot(ITwitchIrcClient client, IConfiguration configuration)
+        public WauwBot(
+            ITwitchIrcClient twitchClient,
+            IConfiguration twitchConfiguration)
         {
-            Client = client;
+            TwitchClient = twitchClient;
 
             InitializeComponent();
 
             Running = true;
-            client.Connect();
+            twitchClient.Connect();
 
-            var thread = new Thread(ReadMessages);
-            thread.Start();
+            var twitchThread = new Thread(ReadTwitchMessages);
+            twitchThread.Start();
 
-            client.SendRawMessage(IrcCommandsFactory.CapReq(configuration.TwitchIrcMembershipCapability));
-            client.SendRawMessage(IrcCommandsFactory.Join(configuration.TwitchIrcNickname));
+            twitchClient.SendRawMessage(IrcCommandsFactory.CapReq(twitchConfiguration.TwitchIrcMembershipCapability));
+            twitchClient.SendRawMessage(IrcCommandsFactory.Join(twitchConfiguration.TwitchIrcNickname));
         }
 
         private delegate void AddChatMessage(ChatMessage msg);
 
-        public ITwitchIrcClient Client { get; set; }
+        public ITwitchIrcClient TwitchClient { get; set; }
 
         public bool Running { get; set; }
 
@@ -60,22 +61,25 @@
         {
             var message = messageTextBox.Text.Trim();
 
-            Client.SendChatMessage(message);
+            TwitchClient.SendChatMessage(message);
             AddChatItem(new ChatMessage { Message = message, Provider = Provider.Omni, Username = "YOU", Timestamp = DateTime.Now });
             messageTextBox.Clear();
         }
 
-        private void ReadMessages()
+        private void ReadTwitchMessages()
         {
-            var channelName = string.Format("#{0}", "imasser");
+            ReadMessages(TwitchClient, string.Format("#{0}", "imasser"));
+        }
 
+        private void ReadMessages(IIrcClient client, string channelName)
+        {
             while (Running)
             {
                 IrcMessage ircMessage;
 
                 try
                 {
-                    ircMessage = Client.ReadIrcMessage();
+                    ircMessage = client.ReadIrcMessage();
                 }
                 catch (IOException)
                 {
