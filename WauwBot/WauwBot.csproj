@@ -78,6 +78,15 @@
     </Compile>
     <Compile Include="DataAccess\Stores\ReadStore.cs" />
     <Compile Include="DataAccess\Stores\WriteStore.cs" />
+    <Compile Include="View\UiElements\MessageListBox\ItemInfo.cs" />
+    <Compile Include="View\UiElements\MessageListBox\ListBoxList.cs" />
+    <Compile Include="View\UiElements\MessageListBox\MessageListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\UiElements\MessageListBox\ParseMessageEventArgs.cs" />
+    <Compile Include="View\UiElements\MessageListBox\ResizableListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="View\WauwBot.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +105,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\UiElements\MessageListBox\MessageListBox.resx">
+      <DependentUpon>MessageListBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UiElements\MessageListBox\ResizableListBox.resx">
+      <DependentUpon>ResizableListBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\WauwBot.resx">
       <DependentUpon>WauwBot.cs</DependentUpon>
     </EmbeddedResource>
