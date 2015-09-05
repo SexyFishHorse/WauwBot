@@ -28,48 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.chatList = new System.Windows.Forms.ListView();
-            this.providerHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.usernameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.timestampHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.messageHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.messageTextBox = new System.Windows.Forms.TextBox();
             this.sendButton = new System.Windows.Forms.Button();
+            this.chatListBox = new SexyFishHorse.WauwBot.View.UiElements.MessageListBox.MessageListBox();
             this.SuspendLayout();
-            // 
-            // chatList
-            // 
-            this.chatList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chatList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.providerHeader,
-            this.usernameHeader,
-            this.timestampHeader,
-            this.messageHeader});
-            this.chatList.Location = new System.Drawing.Point(12, 12);
-            this.chatList.Name = "chatList";
-            this.chatList.Size = new System.Drawing.Size(690, 399);
-            this.chatList.TabIndex = 0;
-            this.chatList.UseCompatibleStateImageBehavior = false;
-            this.chatList.View = System.Windows.Forms.View.Details;
-            // 
-            // providerHeader
-            // 
-            this.providerHeader.Tag = "";
-            this.providerHeader.Text = "Provider";
-            // 
-            // usernameHeader
-            // 
-            this.usernameHeader.Text = "Username";
-            // 
-            // timestampHeader
-            // 
-            this.timestampHeader.Text = "Timestamp";
-            // 
-            // messageHeader
-            // 
-            this.messageHeader.Text = "Message";
             // 
             // messageTextBox
             // 
@@ -91,15 +53,30 @@
             this.sendButton.UseVisualStyleBackColor = true;
             this.sendButton.Click += new System.EventHandler(this.SendButtonClick);
             // 
+            // chatListBox
+            // 
+            this.chatListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chatListBox.AutoScroll = true;
+            this.chatListBox.AutoScrollMinSize = new System.Drawing.Size(660, 0);
+            this.chatListBox.BackColor = System.Drawing.Color.White;
+            this.chatListBox.Location = new System.Drawing.Point(12, 12);
+            this.chatListBox.Name = "chatListBox";
+            this.chatListBox.SelectedIndex = -1;
+            this.chatListBox.SelectedItem = null;
+            this.chatListBox.Size = new System.Drawing.Size(690, 399);
+            this.chatListBox.TabIndex = 4;
+            // 
             // WauwBot
             // 
             this.AcceptButton = this.sendButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(714, 449);
+            this.Controls.Add(this.chatListBox);
             this.Controls.Add(this.sendButton);
             this.Controls.Add(this.messageTextBox);
-            this.Controls.Add(this.chatList);
             this.Name = "WauwBot";
             this.Text = "WauwBot";
             this.ResumeLayout(false);
@@ -109,13 +86,9 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView chatList;
-        private System.Windows.Forms.ColumnHeader providerHeader;
-        private System.Windows.Forms.ColumnHeader usernameHeader;
-        private System.Windows.Forms.ColumnHeader timestampHeader;
-        private System.Windows.Forms.ColumnHeader messageHeader;
         private System.Windows.Forms.TextBox messageTextBox;
         private System.Windows.Forms.Button sendButton;
+        private UiElements.MessageListBox.MessageListBox chatListBox;
     }
 }
 

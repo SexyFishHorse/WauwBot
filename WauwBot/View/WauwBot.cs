@@ -4,6 +4,7 @@
     using System.IO;
     using System.Threading;
     using System.Windows.Forms;
+    using ListBox;
     using SexyFishHorse.Irc.Client;
     using SexyFishHorse.Irc.Client.Clients;
     using SexyFishHorse.Irc.Client.Configuration;
@@ -14,8 +15,6 @@
 
     public partial class WauwBot : Form
     {
-        private delegate void AddChatMessage(ChatMessage msg);
-
         public WauwBot(ITwitchIrcClient client, IConfiguration configuration)
         {
             Client = client;
@@ -25,7 +24,6 @@
             Running = true;
             client.Connect();
 
-            client.MessageSent += MessageSent;
             var thread = new Thread(ReadMessages);
             thread.Start();
 
@@ -33,9 +31,39 @@
             client.SendRawMessage(IrcCommandsFactory.Join(configuration.TwitchIrcNickname));
         }
 
+        private delegate void AddChatMessage(ChatMessage msg);
+
         public ITwitchIrcClient Client { get; set; }
 
         public bool Running { get; set; }
+
+        public void MessageSent(OnMessageSentEventArgs obj)
+        {
+            AddChatItem(new ChatMessage { Message = obj.Message, Provider = Provider.Omni, Timestamp = DateTime.Now, Username = "YOU" });
+        }
+
+        private void AddChatItem(ChatMessage chatMessage)
+        {
+            if (chatListBox.InvokeRequired)
+            {
+                AddChatMessage d = AddChatItem;
+                Invoke(d, chatMessage);
+            }
+            else
+            {
+                chatListBox.Items.Add(new ChatLine(chatMessage));
+                chatListBox.Invalidate();
+            }
+        }
+
+        private void SendButtonClick(object sender, EventArgs e)
+        {
+            var message = messageTextBox.Text.Trim();
+
+            Client.SendChatMessage(message);
+            AddChatItem(new ChatMessage { Message = message, Provider = Provider.Omni, Username = "YOU", Timestamp = DateTime.Now });
+            messageTextBox.Clear();
+        }
 
         private void ReadMessages()
         {
@@ -74,7 +102,7 @@
                         new ChatMessage
                         {
                             Message = message,
-                            Provider = "twitch",
+                            Provider = Provider.Twitch,
                             Timestamp = DateTime.Now,
                             Username = username
                         });
@@ -107,39 +135,6 @@
                     Console.WriteLine("<RAW MESSAGE> {0}", rawMessage);
                 }
             }
-        }
-
-        public void MessageSent(OnMessageSentEventArgs obj)
-        {
-            AddChatItem(new ChatMessage { Message = obj.Message, Provider = "Omni", Timestamp = DateTime.Now, Username = "YOU" });
-        }
-
-        private void AddChatItem(ChatMessage chatMessage)
-        {
-            if (chatList.InvokeRequired)
-            {
-                AddChatMessage d = AddChatItem;
-                Invoke(d, chatMessage);
-            }
-            else
-            {
-                chatList.BeginUpdate();
-                chatList.Items.Add(
-                    new ChatListViewItem(
-                        chatMessage.Provider,
-                        chatMessage.Username,
-                        chatMessage.Timestamp,
-                        chatMessage.Message));
-                chatList.EndUpdate();
-            }
-        }
-
-        private void SendButtonClick(object sender, EventArgs e)
-        {
-            var message = messageTextBox.Text.Trim();
-
-            Client.SendChatMessage(message);
-            messageTextBox.Clear();
         }
     }
 }
