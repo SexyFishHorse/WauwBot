@@ -11,7 +11,7 @@
         [STAThread]
         public static void Main()
         {
-            var kernel = new StandardKernel(new IrcClientModule());
+            var kernel = new StandardKernel(new WauwBotModule(), new IrcClientModule());
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
