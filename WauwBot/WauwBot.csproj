@@ -32,12 +32,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\MongoDB.Bson.2.0.1\lib\net45\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\packages\MongoDB.Driver.2.0.1\lib\net45\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core">
+      <HintPath>..\packages\MongoDB.Driver.Core.2.0.1\lib\net45\MongoDB.Driver.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Ninject.Extensions.Conventions, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>packages\ninject.extensions.conventions.3.2.0.0\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
+      <HintPath>..\packages\ninject.extensions.conventions.3.2.0.0\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SexyFishHorse.Irc.Client">
@@ -55,8 +64,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\Stores\IReadStore.cs">
+      <DependentUpon>ReadStore.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\ChatMessage.cs" />
+    <Compile Include="Model\MongoBase.cs" />
+    <Compile Include="Model\Provider.cs" />
     <Compile Include="View\UiElements\ChatListViewItem.cs" />
+    <Compile Include="DataAccess\StoredInAttribute.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="DataAccess\Stores\IWriteStore.cs">
+      <DependentUpon>WriteStore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Stores\ReadStore.cs" />
+    <Compile Include="DataAccess\Stores\WriteStore.cs" />
     <Compile Include="View\WauwBot.cs">
       <SubType>Form</SubType>
     </Compile>

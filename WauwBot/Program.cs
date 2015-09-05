@@ -6,10 +6,10 @@
     using SexyFishHorse.Irc.Client.Configuration;
     using SexyFishHorse.WauwBot.View;
 
-    static class Program
+    public static class Program
     {
         [STAThread]
-        static void Main()
+        public static void Main()
         {
             var kernel = new StandardKernel(new IrcClientModule());
 
