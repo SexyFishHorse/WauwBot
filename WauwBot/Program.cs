@@ -2,18 +2,23 @@
 {
     using System;
     using System.Windows.Forms;
+    using Ninject;
+    using SexyFishHorse.Irc.Client.Configuration;
+    using SexyFishHorse.WauwBot.View;
 
     static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
+            var kernel = new StandardKernel(new IrcClientModule());
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            var form = kernel.Get<WauwBot>();
+
+            Application.Run(form);
         }
     }
 }

@@ -5,6 +5,15 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WauwBot", "WauwBot\WauwBot.csproj", "{0818E88E-7C6B-4FEC-9521-16BFB1A4BFDC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{9EEE0E73-118B-4D06-BFAA-6F97CA341C85}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SexyFishHorse.Irc.Client", "SexyFishHorse.Irc.Client", "{E2B94F6A-B376-4378-91EE-404FC7018947}"
+	ProjectSection(SolutionItems) = preProject
+		..\Lib\SexyFishHorse.Irc.Client\SexyFishHorse.Irc.Client.dll = ..\Lib\SexyFishHorse.Irc.Client\SexyFishHorse.Irc.Client.dll
+		..\Lib\SexyFishHorse.Irc.Client\SexyFishHorse.Irc.Client.dll.config = ..\Lib\SexyFishHorse.Irc.Client\SexyFishHorse.Irc.Client.dll.config
+		..\Lib\SexyFishHorse.Irc.Client\SexyFishHorse.Irc.Client.pdb = ..\Lib\SexyFishHorse.Irc.Client\SexyFishHorse.Irc.Client.pdb
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +27,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E2B94F6A-B376-4378-91EE-404FC7018947} = {9EEE0E73-118B-4D06-BFAA-6F97CA341C85}
 	EndGlobalSection
 EndGlobal
